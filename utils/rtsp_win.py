@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QWidget
-from utils.rtsp_dialog import Ui_Form
+from .rtsp_dialog import Ui_Form
 
 
 class Window(QWidget, Ui_Form):

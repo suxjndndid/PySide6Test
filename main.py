@@ -12,7 +12,7 @@ from PySide6.QtCore import QTimer, QThread, Signal, QObject, QPoint, Qt
 from ui.CustomMessageBox import MessageBox
 from ui.home import Ui_MainWindow
 from utils.capnums import Camera
-from .ui.utils.UIFunctions import  *
+from ui.utils.UIFunctions import *
 from collections import defaultdict
 from pathlib import Path
 import numpy as np

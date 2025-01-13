@@ -4,7 +4,7 @@ from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from main import *
 
-from custom_grips import CustomGrip
+from .custom_grips import CustomGrip
 
 GLOBAL_STATE = False    # max min flag
 GLOBAL_TITLE_BAR = True
