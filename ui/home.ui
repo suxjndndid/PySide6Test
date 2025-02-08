@@ -842,6 +842,9 @@ QPushButton:pressed {
                <layout class="QHBoxLayout" name="horizontalLayout_20">
                 <item>
                  <widget class="QStackedWidget" name="stackedWidget">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
                   <widget class="QWidget" name="page1">
                    <layout class="QVBoxLayout" name="verticalLayout_31">
                     <item>
@@ -881,7 +884,7 @@ border-radius:15px;
                           <number>15</number>
                          </property>
                          <item>
-                          <widget class="QFrame" name="Class_QF">
+                          <widget class="QFrame" name="Time_QF">
                            <property name="minimumSize">
                             <size>
                              <width>170</width>
@@ -898,7 +901,7 @@ border-radius:15px;
                             <number>0</number>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QFrame#Class_QF{
+                            <string notr="true">QFrame#Time_QF{
 color: rgb(255, 255, 255);
 border-radius: 15px;
 background-color: qradialgradient(cx:0, cy:0, radius:1, fx:0.1, fy:0.1, stop:0 rgb(162, 129, 247),  stop:1 rgb(119, 111, 252));
@@ -971,7 +974,7 @@ padding-left:12px;
 font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                  </property>
                                  <property name="text">
-                                  <string>Total Classes</string>
+                                  <string>当前时间</string>
                                  </property>
                                  <property name="indent">
                                   <number>0</number>
@@ -998,7 +1001,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                              </widget>
                             </item>
                             <item>
-                             <widget class="QFrame" name="Class_bottom">
+                             <widget class="QFrame" name="Time_bottom">
                               <property name="styleSheet">
                                <string notr="true">border:none</string>
                               </property>
@@ -1060,7 +1063,7 @@ font: 17pt &quot;Microsoft YaHei UI&quot;;</string>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QFrame" name="Target_QF">
+                          <widget class="QFrame" name="FLow_QF">
                            <property name="minimumSize">
                             <size>
                              <width>170</width>
@@ -1077,7 +1080,7 @@ font: 17pt &quot;Microsoft YaHei UI&quot;;</string>
                             <number>0</number>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QFrame#Target_QF{
+                            <string notr="true">QFrame#FLow_QF{
 color: rgb(255, 255, 255);
 border-radius: 15px;
 background-color: qradialgradient(cx:0, cy:0, radius:1, fx:0.1, fy:0.1, stop:0 rgb(253, 139, 133),  stop:1 rgb(248, 194, 152));
@@ -1105,7 +1108,7 @@ border: 1px outset rgb(252, 194, 149)
                              <number>0</number>
                             </property>
                             <item>
-                             <widget class="QFrame" name="Target_top">
+                             <widget class="QFrame" name="FLow_top">
                               <property name="styleSheet">
                                <string notr="true">border:none</string>
                               </property>
@@ -1150,7 +1153,7 @@ padding-left:12px;
 font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                  </property>
                                  <property name="text">
-                                  <string>Total Targets</string>
+                                  <string>客流量</string>
                                  </property>
                                  <property name="indent">
                                   <number>0</number>
@@ -1177,7 +1180,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                              </widget>
                             </item>
                             <item>
-                             <widget class="QFrame" name="Target_bottom">
+                             <widget class="QFrame" name="Flow_bottom">
                               <property name="styleSheet">
                                <string notr="true">border:none</string>
                               </property>
@@ -1239,7 +1242,7 @@ font: 17pt &quot;Microsoft YaHei UI&quot;;</string>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QFrame" name="Fps_QF">
+                          <widget class="QFrame" name="Sum_QF">
                            <property name="minimumSize">
                             <size>
                              <width>170</width>
@@ -1256,7 +1259,7 @@ font: 17pt &quot;Microsoft YaHei UI&quot;;</string>
                             <number>0</number>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QFrame#Fps_QF{
+                            <string notr="true">QFrame#Sum_QF{
 color: rgb(255, 255, 255);
 border-radius: 15px;
 background-color: qradialgradient(cx:0, cy:0, radius:1, fx:0.1, fy:0.1, stop:0 rgb(243, 175, 189),  stop:1 rgb(155, 118, 218));
@@ -1284,7 +1287,7 @@ border: 1px outset rgb(153, 117, 219)
                              <number>0</number>
                             </property>
                             <item>
-                             <widget class="QFrame" name="Fps_top">
+                             <widget class="QFrame" name="Sum_top">
                               <property name="styleSheet">
                                <string notr="true">border:none</string>
                               </property>
@@ -1332,7 +1335,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                   <number>-1</number>
                                  </property>
                                  <property name="text">
-                                  <string>Fps</string>
+                                  <string>总人数</string>
                                  </property>
                                  <property name="wordWrap">
                                   <bool>false</bool>
@@ -1362,7 +1365,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                              </widget>
                             </item>
                             <item>
-                             <widget class="QFrame" name="Fps_bottom">
+                             <widget class="QFrame" name="Sum_bottom">
                               <property name="styleSheet">
                                <string notr="true">border:none</string>
                               </property>
@@ -1517,7 +1520,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                   <number>-1</number>
                                  </property>
                                  <property name="text">
-                                  <string>Use Model</string>
+                                  <string>模型</string>
                                  </property>
                                  <property name="wordWrap">
                                   <bool>false</bool>
