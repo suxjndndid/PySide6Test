@@ -2,7 +2,7 @@ from PySide6.QtCore import *
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QEvent, QTimer
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from main import *
+from 景区慧手.main import MainWindow
 
 from .custom_grips import CustomGrip
 
@@ -134,4 +134,4 @@ class UIFuncitons(MainWindow):
         shadow.setOffset(8, 8)  # offset
         shadow.setBlurRadius(38)    # shadow radius
         shadow.setColor(Color)    # shadow color
-        widget.setGraphicsEffect(shadow) 
+        widget.setGraphicsEffect(shadow)

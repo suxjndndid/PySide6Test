@@ -9,11 +9,11 @@ import json
 import sys
 import cv2
 import os
-import 景区慧手.ui.resources
+from 景区慧手.utils.otherFunction import other_Function
+from 景区慧手.utils.buttonFunction import button_Function
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    main2yolo_begin_sgl = Signal()  # The main window sends an execution signal to the yolo instance
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         # basic interface
@@ -34,77 +34,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Target_num.setText('--')
         self.fps_label.setText('--')
         self.Model_name.setText('--')
-        
-        # # Select detection source
-        # self.src_file_button.clicked.connect(self.open_src_file)  # select local file
-        # self.src_cam_button.clicked.connect(self.chose_cam)
-        # # start testing button
-        # self.run_button.clicked.connect(self.run_or_continue)   # pause/start
-        # self.stop_button.clicked.connect(self.stop)             # termination
-        #
-        # # Other function buttons
-        # self.save_res_button.toggled.connect(self.is_save_res)  # save image option
-        # self.save_txt_button.toggled.connect(self.is_save_txt)  # Save label option
-        # self.ToggleBotton.clicked.connect(lambda: UIFuncitons.toggleMenu(self, True))   # left navigation button
-        # self.settings_button.clicked.connect(lambda: UIFuncitons.settingBox(self, True))   # top right settings button
-        #
-        # # initialization
-        # self.load_config()
 
-        self.turnToPage2.clicked.connect(lambda :self.switch_to_page(self.page2))
-    # The main window displays the original image and detection results
-
-    def load_config(self):
-        config_file = 'config/setting.json'
-        if not os.path.exists(config_file):
-            iou = 0.26
-            conf = 0.33   
-            rate = 10
-            save_res = 0   
-            save_txt = 0    
-            new_config = {"iou": iou,
-                          "conf": conf,
-                          "rate": rate,
-                          "save_res": save_res,
-                          "save_txt": save_txt
-                          }
-            new_json = json.dumps(new_config, ensure_ascii=False, indent=2)
-            with open(config_file, 'w', encoding='utf-8') as f:
-                f.write(new_json)
-        else:
-            config = json.load(open(config_file, 'r', encoding='utf-8'))
-            if len(config) != 5:
-                iou = 0.26
-                conf = 0.33
-                rate = 10
-                save_res = 0
-                save_txt = 0
-            else:
-                iou = config['iou']
-                conf = config['conf']
-                rate = config['rate']
-                save_res = config['save_res']
-                save_txt = config['save_txt']
-        self.save_res_button.setCheckState(Qt.CheckState(save_res))
-        self.yolo_predict.save_res = (False if save_res==0 else True )
-        self.save_txt_button.setCheckState(Qt.CheckState(save_txt)) 
-        self.yolo_predict.save_txt = (False if save_txt==0 else True )
-        self.run_button.setChecked(False)  
-        self.show_status("Welcome~")
-
-
-
-
-
-    def ModelBoxRefre(self):
-        pt_list = os.listdir('./models')
-        pt_list = [file for file in pt_list if file.endswith('.pt')]
-        pt_list.sort(key=lambda x: os.path.getsize('./models/' + x))
-        # It must be sorted before comparing, otherwise the list will be refreshed all the time
-        if pt_list != self.pt_list:
-            self.pt_list = pt_list
-            self.model_box.clear()
-            self.model_box.addItems(self.pt_list)
+        # button connect
+        self.ToggleBotton.clicked.connect(lambda: UIFuncitons.toggleMenu(self, True))   # left navigation button
+        self.settings_button.clicked.connect(lambda: UIFuncitons.settingBox(self, True))   # top right settings button
+        self.now_page = self.page1
+        self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
+        self.labels = [
+            self.video1,  # video1 QLabel
+            self.video2,  # video2 QLabel
+            self.video3,  # video3 QLabel
+            self.video4  # video4 QLabel
+        ]
+        self.run_button.clicked.connect(lambda: button_Function.start_webcam(self.labels))
 
     # Get the mouse position (used to hold down the title bar and drag the window)
     def mousePressEvent(self, event):
@@ -117,30 +59,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Update Size Grips
         UIFuncitons.resize_grips(self)
 
-    # Exit Exit thread, save settings
-    def closeEvent(self, event):
-        config_file = 'config/setting.json'
-        config = dict()
-        config['iou'] = self.iou_spinbox.value()
-        config['conf'] = self.conf_spinbox.value()
-        config['rate'] = self.speed_spinbox.value()
-        config['save_res'] = (0 if self.save_res_button.checkState()==Qt.Unchecked else 2)
-        config['save_txt'] = (0 if self.save_txt_button.checkState()==Qt.Unchecked else 2)
-        config_json = json.dumps(config, ensure_ascii=False, indent=2)
-        with open(config_file, 'w', encoding='utf-8') as f:
-            f.write(config_json)
-        # Exit the process before closing
-        if self.yolo_thread.isRunning():
-            self.yolo_predict.stop_dtc = True
-            self.yolo_thread.quit()
-            MessageBox(
-                self.close_button, title='Note', text='Exiting, please wait...', time=3000, auto=True).exec()
-            sys.exit(0)
-        else:
-            sys.exit(0)
-
     def switch_to_page(self, page):
-        self.stackedWidget.setCurrentWidget(page)
+        # self.stackedWidget.setCurrentWidget(page)
+        if self.now_page == self.page2:
+            self.stackedWidget.setCurrentWidget(self.page1)
+            self.now_page = self.page1
+        else:
+            self.stackedWidget.setCurrentWidget(self.page2)
+            self.now_page = self.page2
 
 
 if __name__ == "__main__":
