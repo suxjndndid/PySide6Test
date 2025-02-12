@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from PySide6.QtGui import QImage, QPixmap, Qt, QPainter, QBrush
+from PySide6.QtGui import QImage, QPixmap, Qt, QPainter, QBrush, QPainterPath
 
 from 景区慧手.utils.webCamera import WebcamThread, Camera
 import logging
@@ -71,10 +71,6 @@ class other_Function:
             label_width = label.geometry().width()
             label_height = label.geometry().height()
 
-            # 留出边框区域，计算新的图像尺寸
-            img_width = label_width - 2 * border_size
-            img_height = label_height - 2 * border_size
-
             # 将捕获的帧转换为 RGB 格式
             rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             h, w, ch = rgb_image.shape
@@ -82,29 +78,34 @@ class other_Function:
             # 将图像转换为 QImage 格式
             q_image = QImage(rgb_image.data, w, h, ch * w, QImage.Format_RGB888)
 
-            # 使用 QPixmap.scaled 进行缩放，铺满 QLabel 并裁剪，缩小图像留出边框
-            pixmap = QPixmap.fromImage(q_image).scaled(img_width, img_height, Qt.KeepAspectRatio,
+            # 放大图像并裁剪，确保铺满整个 QLabel
+            pixmap = QPixmap.fromImage(q_image).scaled(label_width, label_height, Qt.KeepAspectRatioByExpanding,
                                                        Qt.SmoothTransformation)
 
-            # 创建一个带圆角的透明 QPixmap，大小和 QLabel 一样
+            # 创建一个透明的 QPixmap，大小为 QLabel 的尺寸
             rounded_pixmap = QPixmap(label_width, label_height)
             rounded_pixmap.fill(Qt.transparent)
 
-            # 使用 QPainter 绘制带圆角的图像
+            # 使用 QPainter 来绘制图像
             painter = QPainter(rounded_pixmap)
             painter.setRenderHint(QPainter.Antialiasing)  # 开启抗锯齿
-            painter.setBrush(QBrush(pixmap))  # 设置刷子为图像
-            painter.setPen(Qt.transparent)  # 透明边框
-            # 绘制带圆角的矩形，和 QLabel 的样式相同
-            painter.drawRoundedRect(border_size, border_size, img_width, img_height, 15, 15)  # 留出边框，15 是圆角半径
+
+            # 使用 QPainterPath 创建带圆角的矩形路径
+            path = QPainterPath()
+            path.addRoundedRect(border_size, border_size, label_width - 2 * border_size, label_height - 2 * border_size,
+                                15, 15)  # 15 是圆角半径
+
+            # 裁剪路径并绘制图像
+            painter.setClipPath(path)
+            painter.drawPixmap(0, 0, pixmap)
+
             painter.end()
 
-            # 显示带圆角的图像到 QLabel 上
+            # 显示带圆角且留有边距的图像到 QLabel 上
             label.setPixmap(rounded_pixmap)
 
         except Exception as e:
             logging.error(f"Error in showImg: {e}")
-
 
     # 新增方法，用于批量渲染摄像头画面
     @staticmethod
