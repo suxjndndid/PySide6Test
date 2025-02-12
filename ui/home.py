@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'homeUDxtfN.ui'
+## Form generated from reading UI file 'homednJAdA.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -516,21 +516,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.setSpacing(0)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.verticalLayout_23.setContentsMargins(0, 6, 0, 6)
-        self.Class_num = QLabel(self.Time_bottom)
-        self.Class_num.setObjectName(u"Class_num")
-        self.Class_num.setMinimumSize(QSize(0, 30))
-        self.Class_num.setMaximumSize(QSize(16777215, 30))
+        self.nowTime = QLabel(self.Time_bottom)
+        self.nowTime.setObjectName(u"nowTime")
+        self.nowTime.setMinimumSize(QSize(0, 30))
+        self.nowTime.setMaximumSize(QSize(16777215, 30))
         font3 = QFont()
         font3.setFamilies([u"Microsoft YaHei UI"])
         font3.setPointSize(17)
         font3.setBold(False)
         font3.setItalic(False)
         font3.setUnderline(False)
-        self.Class_num.setFont(font3)
-        self.Class_num.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+        self.nowTime.setFont(font3)
+        self.nowTime.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "font: 17pt \"Microsoft YaHei UI\";")
 
-        self.verticalLayout_23.addWidget(self.Class_num)
+        self.verticalLayout_23.addWidget(self.nowTime)
 
 
         self.verticalLayout_17.addWidget(self.Time_bottom)
@@ -672,15 +672,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.setSpacing(0)
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.verticalLayout_27.setContentsMargins(0, 6, 0, 6)
-        self.fps_label = QLabel(self.Sum_bottom)
-        self.fps_label.setObjectName(u"fps_label")
-        self.fps_label.setMinimumSize(QSize(0, 30))
-        self.fps_label.setMaximumSize(QSize(16777215, 30))
-        self.fps_label.setFont(font3)
-        self.fps_label.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+        self.Sum = QLabel(self.Sum_bottom)
+        self.Sum.setObjectName(u"Sum")
+        self.Sum.setMinimumSize(QSize(0, 30))
+        self.Sum.setMaximumSize(QSize(16777215, 30))
+        self.Sum.setFont(font3)
+        self.Sum.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "font: 17pt \"Microsoft YaHei UI\";")
 
-        self.verticalLayout_27.addWidget(self.fps_label)
+        self.verticalLayout_27.addWidget(self.Sum)
 
 
         self.verticalLayout_26.addWidget(self.Sum_bottom)
@@ -1606,11 +1606,11 @@ class Ui_MainWindow(object):
         self.max_sf.setText("")
         self.close_button.setText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u5f53\u524d\u65f6\u95f4", None))
-        self.Class_num.setText("")
+        self.nowTime.setText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u5ba2\u6d41\u91cf", None))
         self.Target_num.setText("")
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u603b\u4eba\u6570", None))
-        self.fps_label.setText("")
+        self.Sum.setText("")
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u6a21\u578b", None))
         self.Model_name.setText("")
         self.video1.setText("")

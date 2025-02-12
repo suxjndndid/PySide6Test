@@ -1025,7 +1025,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                 <number>6</number>
                                </property>
                                <item>
-                                <widget class="QLabel" name="Class_num">
+                                <widget class="QLabel" name="nowTime">
                                  <property name="minimumSize">
                                   <size>
                                    <width>0</width>
@@ -1389,7 +1389,7 @@ font: 700 italic 16pt &quot;Segoe UI&quot;;</string>
                                 <number>6</number>
                                </property>
                                <item>
-                                <widget class="QLabel" name="fps_label">
+                                <widget class="QLabel" name="Sum">
                                  <property name="minimumSize">
                                   <size>
                                    <width>0</width>

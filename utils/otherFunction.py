@@ -13,6 +13,7 @@ class other_Function:
     threads = []  # 新增类变量保存所有线程
     page = 0
     cams = [0]  # 确保cams已初始化
+    trsp = []
 
     @staticmethod
     def imgToLabel(cam, label):
@@ -127,16 +128,24 @@ class other_Function:
                 logging.warning(f"第{i}个摄像头超出范围")
 
     @staticmethod
-    def showQF(info, label):
-        label.setText(info)
+    def showQF(display_text, target_num, sum_value, model_name, labels):
+        # 设置标签的文本并居中显示
+        labels[0].setText(display_text)
+        labels[0].setAlignment(Qt.AlignCenter)  # 居中显示文本
+
+        labels[1].setText(target_num)
+        labels[1].setAlignment(Qt.AlignCenter)  # 居中显示文本
+
+        labels[2].setText(sum_value)
+        labels[2].setAlignment(Qt.AlignCenter)  # 居中显示文本
+
+        labels[3].setText(model_name)
+        labels[3].setAlignment(Qt.AlignCenter)  # 居中显示文本
 
 
     @staticmethod
     def load_rust_webcam():
-        # 假设这里加载Rust摄像头
-        for i in range(4):  # 假设有4个Rust摄像头
-            cam = WebcamThread(i)  # 创建WebcamThread对象
-            other_Function.cams.append(cam)  # 将摄像头添加到cams列表中
+        pass
 
 
 if __name__ == '__main__':

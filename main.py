@@ -11,7 +11,7 @@ import cv2
 import os
 from 景区慧手.utils.otherFunction import other_Function
 from 景区慧手.utils.buttonFunction import button_Function
-
+from 景区慧手.utils.showQF_ext import ShowQfThread
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -28,14 +28,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         UIFuncitons.shadow_style(self, self.Model_QF, QColor(64, 186, 193))
 
 
-
-        # Prompt window initialization
-        self.Class_num.setText('--')
-        self.Target_num.setText('--')
-        self.fps_label.setText('--')
-        self.Model_name.setText('--')
-
-        # button connect
+        qf_labels = [
+            self.nowTime,  # Time QLabel
+            self.Target_num,  # Flow QLabel
+            self.Sum,  # Sum QLabel
+            self.Model_name  # Model QLabel
+        ]
+        self.ShowQfThread = ShowQfThread()
+        self.ShowQfThread.data_update_inf.connect(lambda display_text, target_num, sum_value, model_name:
+                                                  other_Function.showQF(display_text, target_num, sum_value, model_name,
+                                                                        qf_labels))        # button connect
+        self.ShowQfThread.start()
         self.ToggleBotton.clicked.connect(lambda: UIFuncitons.toggleMenu(self, True))   # left navigation button
         self.settings_button.clicked.connect(lambda: UIFuncitons.settingBox(self, True))   # top right settings button
         self.now_page = self.page1
