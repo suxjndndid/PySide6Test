@@ -42,7 +42,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ToggleBotton.clicked.connect(lambda: UIFuncitons.toggleMenu(self, True))   # left navigation button
         self.settings_button.clicked.connect(lambda: UIFuncitons.settingBox(self, True))   # top right settings button
         self.now_page = self.page1
-        self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
         self.labels = [
             self.video1,  # video1 QLabel
             self.video2,  # video2 QLabel
@@ -50,6 +49,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.video4  # video4 QLabel
         ]
         self.run_button.clicked.connect(lambda: button_Function.start_webcam(self.labels))
+
+        self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
+        self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
 
     # Get the mouse position (used to hold down the title bar and drag the window)
     def mousePressEvent(self, event):
@@ -63,13 +65,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         UIFuncitons.resize_grips(self)
 
     def switch_to_page(self, page):
-        # self.stackedWidget.setCurrentWidget(page)
-        if self.now_page == self.page2:
-            self.stackedWidget.setCurrentWidget(self.page1)
-            self.now_page = self.page1
-        else:
-            self.stackedWidget.setCurrentWidget(self.page2)
-            self.now_page = self.page2
+        self.stackedWidget.setCurrentWidget(page)
+        # if self.now_page == self.page2:
+        #     self.stackedWidget.setCurrentWidget(self.page1)
+        #     self.now_page = self.page1
+        # else:
+        #     self.stackedWidget.setCurrentWidget(self.page2)
+        #     self.now_page = self.page2
 
 
 if __name__ == "__main__":

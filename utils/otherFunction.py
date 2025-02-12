@@ -79,9 +79,25 @@ class other_Function:
             # 将图像转换为 QImage 格式
             q_image = QImage(rgb_image.data, w, h, ch * w, QImage.Format_RGB888)
 
-            # 放大图像并裁剪，确保铺满整个 QLabel
-            pixmap = QPixmap.fromImage(q_image).scaled(label_width, label_height, Qt.KeepAspectRatioByExpanding,
-                                                       Qt.SmoothTransformation)
+            # 计算图像需要裁剪的宽度差
+            aspect_ratio = w / h
+            label_aspect_ratio = label_width / label_height
+
+            # 根据宽高比决定如何调整图像
+            if aspect_ratio > label_aspect_ratio:
+                # 如果图像更宽，裁剪左右两边
+                new_width = int(label_height * aspect_ratio)
+                offset_x = (new_width - label_width) // 2
+                pixmap = QPixmap.fromImage(q_image).scaled(new_width, label_height, Qt.KeepAspectRatioByExpanding,
+                                                           Qt.SmoothTransformation)
+                pixmap = pixmap.copy(offset_x, 0, label_width, label_height)
+            else:
+                # 如果图像更高，裁剪上下两边
+                new_height = int(label_width / aspect_ratio)
+                offset_y = (new_height - label_height) // 2
+                pixmap = QPixmap.fromImage(q_image).scaled(label_width, new_height, Qt.KeepAspectRatioByExpanding,
+                                                           Qt.SmoothTransformation)
+                pixmap = pixmap.copy(0, offset_y, label_width, label_height)
 
             # 创建一个透明的 QPixmap，大小为 QLabel 的尺寸
             rounded_pixmap = QPixmap(label_width, label_height)
