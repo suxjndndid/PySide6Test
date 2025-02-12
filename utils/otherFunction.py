@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from PySide6.QtGui import QImage, QPixmap
+from PySide6.QtGui import QImage, QPixmap, Qt, QPainter, QBrush
 
 from 景区慧手.utils.webCamera import WebcamThread, Camera
 import logging
@@ -17,16 +17,8 @@ class other_Function:
     @staticmethod
     def imgToLabel(cam, label):
         try:
-            logging.info(f"启动摄像头{cam}到标签")
-            # 检查摄像头是否可用
-            camera_checker = Camera(cam_preset_num=cam + 1)
-            count, devices = camera_checker.get_cam_num()
-            if cam not in devices:
-                logging.error(f"摄像头{cam}不可用")
-                return
-
             thread = WebcamThread(cam)
-            thread.changePixmap.connect(lambda frame: other_Function.showImg(frame, label))
+            thread.changePixmap.connect(lambda frame: other_Function.showImg_all(frame, label))
             other_Function.threads.append(thread)  # 保存线程引用
             thread.start()
         except Exception as e:
@@ -72,24 +64,66 @@ class other_Function:
 
         except Exception as e:
             logging.error(f"Error in update_image: {e}")
+    @staticmethod
+    def showImg_all(frame, label, border_size=10):
+        try:
+            # 获取 QLabel 的大小
+            label_width = label.geometry().width()
+            label_height = label.geometry().height()
+
+            # 留出边框区域，计算新的图像尺寸
+            img_width = label_width - 2 * border_size
+            img_height = label_height - 2 * border_size
+
+            # 将捕获的帧转换为 RGB 格式
+            rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            h, w, ch = rgb_image.shape
+
+            # 将图像转换为 QImage 格式
+            q_image = QImage(rgb_image.data, w, h, ch * w, QImage.Format_RGB888)
+
+            # 使用 QPixmap.scaled 进行缩放，铺满 QLabel 并裁剪，缩小图像留出边框
+            pixmap = QPixmap.fromImage(q_image).scaled(img_width, img_height, Qt.KeepAspectRatio,
+                                                       Qt.SmoothTransformation)
+
+            # 创建一个带圆角的透明 QPixmap，大小和 QLabel 一样
+            rounded_pixmap = QPixmap(label_width, label_height)
+            rounded_pixmap.fill(Qt.transparent)
+
+            # 使用 QPainter 绘制带圆角的图像
+            painter = QPainter(rounded_pixmap)
+            painter.setRenderHint(QPainter.Antialiasing)  # 开启抗锯齿
+            painter.setBrush(QBrush(pixmap))  # 设置刷子为图像
+            painter.setPen(Qt.transparent)  # 透明边框
+            # 绘制带圆角的矩形，和 QLabel 的样式相同
+            painter.drawRoundedRect(border_size, border_size, img_width, img_height, 15, 15)  # 留出边框，15 是圆角半径
+            painter.end()
+
+            # 显示带圆角的图像到 QLabel 上
+            label.setPixmap(rounded_pixmap)
+
+        except Exception as e:
+            logging.error(f"Error in showImg: {e}")
+
+
     # 新增方法，用于批量渲染摄像头画面
     @staticmethod
     def renderCameras(labels, page=0):
         logging.info("renderCameras函数开始运行")
-        other_Function.imgToLabel(0, labels[0])
+        # other_Function.imgToLabel(0, labels[3])
         if not other_Function.cams:
             logging.warning("摄像头列表为空")
             return
         if not labels:
             logging.warning("标签列表为空")
             return
-        # for i, cam in enumerate(other_Function.cams[page * 4:(page + 1) * 4]):
-        #     logging.info(f"正在处理第{i}个摄像头{cam}")
-        #     if i < len(labels):  # 确保不会超出cams的范围
-        #         logging.info(f"正在渲染第{i}个摄像头")
-        #         other_Function.imgToLabel(i, labels[i])
-        #     else:
-        #         logging.warning(f"第{i}个摄像头超出范围")
+        for i, cam in enumerate(other_Function.cams[page * 4:(page + 1) * 4]):
+            logging.info(f"正在处理第{i}个摄像头{cam}")
+            if i < len(labels):  # 确保不会超出cams的范围
+                logging.info(f"正在渲染第{i}个摄像头")
+                other_Function.imgToLabel(i, labels[i])
+            else:
+                logging.warning(f"第{i}个摄像头超出范围")
 
     @staticmethod
     def showQF(info, label):

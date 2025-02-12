@@ -1623,10 +1623,16 @@ font: 15pt &quot;Microsoft YaHei UI&quot;;
                         <property name="frameShape">
                          <enum>QFrame::Shape::NoFrame</enum>
                         </property>
-                        <layout class="QVBoxLayout" name="verticalLayout">
+                        <layout class="QHBoxLayout" name="horizontalLayout_6">
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_6">
-                           <item>
+                          <widget class="QSplitter" name="splitter_3">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <widget class="QSplitter" name="splitter">
+                            <property name="orientation">
+                             <enum>Qt::Orientation::Horizontal</enum>
+                            </property>
                             <widget class="QLabel" name="video1">
                              <property name="minimumSize">
                               <size>
@@ -1643,8 +1649,6 @@ border-radius:15px</string>
                               <string/>
                              </property>
                             </widget>
-                           </item>
-                           <item>
                             <widget class="QLabel" name="video2">
                              <property name="minimumSize">
                               <size>
@@ -1661,12 +1665,11 @@ border-radius:15px</string>
                               <string/>
                              </property>
                             </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_7">
-                           <item>
+                           </widget>
+                           <widget class="QSplitter" name="splitter_2">
+                            <property name="orientation">
+                             <enum>Qt::Orientation::Horizontal</enum>
+                            </property>
                             <widget class="QLabel" name="video3">
                              <property name="minimumSize">
                               <size>
@@ -1683,8 +1686,6 @@ border-radius:15px</string>
                               <string/>
                              </property>
                             </widget>
-                           </item>
-                           <item>
                             <widget class="QLabel" name="video4">
                              <property name="minimumSize">
                               <size>
@@ -1701,8 +1702,8 @@ border-radius:15px</string>
                               <string/>
                              </property>
                             </widget>
-                           </item>
-                          </layout>
+                           </widget>
+                          </widget>
                          </item>
                         </layout>
                        </widget>

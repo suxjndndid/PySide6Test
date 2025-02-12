@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'homeCqVufc.ui'
+## Form generated from reading UI file 'homeUDxtfN.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
     QFrame, QHBoxLayout, QLabel, QLayout,
     QMainWindow, QPushButton, QSizePolicy, QSlider,
-    QSpacerItem, QSpinBox, QStackedWidget, QVBoxLayout,
-    QWidget)
+    QSpacerItem, QSpinBox, QSplitter, QStackedWidget,
+    QVBoxLayout, QWidget)
 import 景区慧手.ui.resources_rc
 
 class Ui_MainWindow(object):
@@ -780,53 +780,49 @@ class Ui_MainWindow(object):
         self.Result_QF.setObjectName(u"Result_QF")
         self.Result_QF.setStyleSheet(u"")
         self.Result_QF.setFrameShape(QFrame.Shape.NoFrame)
-        self.verticalLayout = QVBoxLayout(self.Result_QF)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6 = QHBoxLayout(self.Result_QF)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.video1 = QLabel(self.Result_QF)
+        self.splitter_3 = QSplitter(self.Result_QF)
+        self.splitter_3.setObjectName(u"splitter_3")
+        self.splitter_3.setOrientation(Qt.Orientation.Vertical)
+        self.splitter = QSplitter(self.splitter_3)
+        self.splitter.setObjectName(u"splitter")
+        self.splitter.setOrientation(Qt.Orientation.Horizontal)
+        self.video1 = QLabel(self.splitter)
         self.video1.setObjectName(u"video1")
         self.video1.setMinimumSize(QSize(200, 100))
         self.video1.setStyleSheet(u"background-color: rgb(238, 242, 255);\n"
 "border:2px solid rgb(255, 255, 255);\n"
 "border-radius:15px")
-
-        self.horizontalLayout_6.addWidget(self.video1)
-
-        self.video2 = QLabel(self.Result_QF)
+        self.splitter.addWidget(self.video1)
+        self.video2 = QLabel(self.splitter)
         self.video2.setObjectName(u"video2")
         self.video2.setMinimumSize(QSize(200, 100))
         self.video2.setStyleSheet(u"background-color: rgb(238, 242, 255);\n"
 "border:2px solid rgb(255, 255, 255);\n"
 "border-radius:15px")
-
-        self.horizontalLayout_6.addWidget(self.video2)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_6)
-
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.video3 = QLabel(self.Result_QF)
+        self.splitter.addWidget(self.video2)
+        self.splitter_3.addWidget(self.splitter)
+        self.splitter_2 = QSplitter(self.splitter_3)
+        self.splitter_2.setObjectName(u"splitter_2")
+        self.splitter_2.setOrientation(Qt.Orientation.Horizontal)
+        self.video3 = QLabel(self.splitter_2)
         self.video3.setObjectName(u"video3")
         self.video3.setMinimumSize(QSize(200, 100))
         self.video3.setStyleSheet(u"background-color: rgb(238, 242, 255);\n"
 "border:2px solid rgb(255, 255, 255);\n"
 "border-radius:15px")
-
-        self.horizontalLayout_7.addWidget(self.video3)
-
-        self.video4 = QLabel(self.Result_QF)
+        self.splitter_2.addWidget(self.video3)
+        self.video4 = QLabel(self.splitter_2)
         self.video4.setObjectName(u"video4")
         self.video4.setMinimumSize(QSize(200, 100))
         self.video4.setStyleSheet(u"background-color: rgb(238, 242, 255);\n"
 "border:2px solid rgb(255, 255, 255);\n"
 "border-radius:15px")
+        self.splitter_2.addWidget(self.video4)
+        self.splitter_3.addWidget(self.splitter_2)
 
-        self.horizontalLayout_7.addWidget(self.video4)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_7)
+        self.horizontalLayout_6.addWidget(self.splitter_3)
 
 
         self.main_content.addWidget(self.Result_QF)
