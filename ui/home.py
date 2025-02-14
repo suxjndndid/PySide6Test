@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'homednJAdA.ui'
+## Form generated from reading UI file 'homeqTPvoD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -236,29 +236,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.src_cam_button)
 
-        self.src_file_button = QPushButton(self.MenuBox)
-        self.src_file_button.setObjectName(u"src_file_button")
-        self.src_file_button.setMinimumSize(QSize(0, 45))
-        self.src_file_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.src_file_button.setStyleSheet(u"QPushButton{\n"
-"background-image: url(:/all/img/file.png);\n"
-"background-repeat: no-repeat;\n"
-"background-position: left center;\n"
-"border: none;\n"
-"border-left: 23px solid transparent;\n"
-"\n"
-"text-align: center;\n"
-"padding-left: 0px;\n"
-"color: rgba(255, 255, 255, 199);\n"
-"font: 700 12pt \"Nirmala UI\";\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-color: rgba(114, 129, 214, 59);\n"
-"}")
-
-        self.verticalLayout_5.addWidget(self.src_file_button)
-
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
@@ -431,10 +408,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.pages = QWidget(self.content)
         self.pages.setObjectName(u"pages")
-        self.horizontalLayout_20 = QHBoxLayout(self.pages)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.verticalLayout_7 = QVBoxLayout(self.pages)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.stackedWidget = QStackedWidget(self.pages)
         self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setStyleSheet(u"")
         self.page1 = QWidget()
         self.page1.setObjectName(u"page1")
         self.verticalLayout_31 = QVBoxLayout(self.page1)
@@ -928,16 +906,132 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page1)
         self.page2 = QWidget()
         self.page2.setObjectName(u"page2")
-        self.horizontalLayout_21 = QHBoxLayout(self.page2)
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.label_2 = QLabel(self.page2)
+        self.verticalLayout_8 = QVBoxLayout(self.page2)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_5)
+
+        self.Title_2 = QFrame(self.page2)
+        self.Title_2.setObjectName(u"Title_2")
+        self.Title_2.setStyleSheet(u"QFrame#Title_2{\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"background-color: qradialgradient(cx:0, cy:0, radius:1, fx:0.1, fy:0.1, stop:0 rgb(255, 200, 120),  stop:1 rgb(80, 140, 200));\n"
+"border: 1px outset rgb(98, 91, 213);\n"
+"}\n"
+"")
+        self.Title_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Title_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.Title_2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_9 = QLabel(self.Title_2)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"font: 17pt \"Microsoft YaHei UI\";")
+        self.label_9.setTextFormat(Qt.TextFormat.AutoText)
+        self.label_9.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_7.addWidget(self.label_9)
+
+
+        self.horizontalLayout_9.addWidget(self.Title_2)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_6)
+
+        self.horizontalLayout_9.setStretch(0, 5)
+        self.horizontalLayout_9.setStretch(1, 80)
+        self.horizontalLayout_9.setStretch(2, 5)
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_9)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_8.addItem(self.verticalSpacer_3)
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
+
+        self.other = QFrame(self.page2)
+        self.other.setObjectName(u"other")
+        self.other.setStyleSheet(u"QFrame#other{\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"background-color: rgb(243,243,243)\n"
+"border: 1px outset rgb(98, 91, 213);\n"
+"}\n"
+"")
+        self.other.setFrameShape(QFrame.Shape.Box)
+        self.other.setFrameShadow(QFrame.Shadow.Raised)
+
+        self.horizontalLayout_8.addWidget(self.other)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_4)
+
+        self.log = QFrame(self.page2)
+        self.log.setObjectName(u"log")
+        self.log.setStyleSheet(u"QFrame#log{\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 15px;\n"
+"background-color: rgb(243,243,243)\n"
+"border: 1px outset rgb(98, 91, 213);\n"
+"}\n"
+"")
+        self.log.setFrameShape(QFrame.Shape.Box)
+        self.log.setFrameShadow(QFrame.Shadow.Plain)
+        self.log.setMidLineWidth(-3)
+        self.verticalLayout = QVBoxLayout(self.log)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label_2 = QLabel(self.log)
         self.label_2.setObjectName(u"label_2")
 
-        self.horizontalLayout_21.addWidget(self.label_2)
+        self.verticalLayout.addWidget(self.label_2)
 
+        self.label_3 = QLabel(self.log)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setFrameShape(QFrame.Shape.HLine)
+        self.label_3.setLineWidth(3)
+
+        self.verticalLayout.addWidget(self.label_3)
+
+        self.label_4 = QLabel(self.log)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout.addWidget(self.label_4)
+
+        self.verticalLayout.setStretch(0, 5)
+        self.verticalLayout.setStretch(1, 5)
+        self.verticalLayout.setStretch(2, 90)
+
+        self.horizontalLayout_8.addWidget(self.log)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_2)
+
+        self.horizontalLayout_8.setStretch(0, 5)
+        self.horizontalLayout_8.setStretch(1, 40)
+        self.horizontalLayout_8.setStretch(2, 10)
+        self.horizontalLayout_8.setStretch(3, 40)
+        self.horizontalLayout_8.setStretch(4, 5)
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_8)
+
+        self.verticalLayout_8.setStretch(0, 26)
+        self.verticalLayout_8.setStretch(1, 4)
+        self.verticalLayout_8.setStretch(2, 70)
         self.stackedWidget.addWidget(self.page2)
 
-        self.horizontalLayout_20.addWidget(self.stackedWidget)
+        self.verticalLayout_7.addWidget(self.stackedWidget)
 
 
         self.horizontalLayout_4.addWidget(self.pages)
@@ -1315,6 +1409,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addWidget(self.conf_slider)
 
+        self.horizontalLayout_11.setStretch(0, 2)
+        self.horizontalLayout_11.setStretch(1, 8)
 
         self.verticalLayout_18.addWidget(self.frame)
 
@@ -1575,7 +1671,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.ToggleBotton.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.ToggleBotton_6.setDefault(False)
         self.ToggleBotton_2.setDefault(False)
         self.ToggleBotton_3.setDefault(False)
@@ -1597,7 +1693,6 @@ class Ui_MainWindow(object):
         self.turnToPage2.setText(QCoreApplication.translate("MainWindow", u"\u9875\u9762\u5207\u6362", None))
         self.src_rtsp_button.setText(QCoreApplication.translate("MainWindow", u"Rtsp", None))
         self.src_cam_button.setText(QCoreApplication.translate("MainWindow", u"Camera", None))
-        self.src_file_button.setText(QCoreApplication.translate("MainWindow", u"Local File", None))
         self.VersionLabel.setText(QCoreApplication.translate("MainWindow", u"Version: 2.0", None))
         self.char_label_2.setText(QCoreApplication.translate("MainWindow", u"Detection", None))
         self.explain_title.setText(QCoreApplication.translate("MainWindow", u"YoloSide App  \u2013  A Graphical User Interface For YoloV8", None))
@@ -1621,7 +1716,10 @@ class Ui_MainWindow(object):
         self.run_button.setText("")
         self.stop_button_3.setText("")
         self.next_page_button.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u6d4b\u8bd5", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u666f\u533a\u9879\u76ee", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u65e5\u5fd7", None))
+        self.label_3.setText("")
+        self.label_4.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.ToggleBotton_6.setText(QCoreApplication.translate("MainWindow", u"Model", None))
         self.model_box.setPlaceholderText("")

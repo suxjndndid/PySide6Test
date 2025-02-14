@@ -10,8 +10,11 @@ import sys
 import cv2
 import os
 from 景区慧手.utils.otherFunction import other_Function
-from 景区慧手.utils.buttonFunction import button_Function
 from 景区慧手.utils.showQF_ext import ShowQfThread
+import logging
+
+# 配置日志
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -48,11 +51,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.video3,  # video3 QLabel
             self.video4  # video4 QLabel
         ]
-        self.run_button.clicked.connect(lambda: button_Function.start_webcam(self.labels))
+        self.cam_page = 0
+        self.run_button.clicked.connect(lambda: other_Function.renderCameras(self.labels, self.cam_page)
+)
 
         self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
         self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
-
+        # 连接close按钮
+        self.stop_button.clicked.connect(lambda: other_Function.stop_webcam())
     # Get the mouse position (used to hold down the title bar and drag the window)
     def mousePressEvent(self, event):
         p = event.globalPosition()
@@ -72,6 +78,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # else:
         #     self.stackedWidget.setCurrentWidget(self.page2)
         #     self.now_page = self.page2
+    # def close(self):
+    #     logging.info("close 函数运行")
+    #     other_Function.stop_webcam()
 
 
 if __name__ == "__main__":

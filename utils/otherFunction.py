@@ -14,6 +14,7 @@ class other_Function:
     page = 0
     cams = [0]  # 确保cams已初始化
     trsp = []
+    labels_list = []
 
     @staticmethod
     def imgToLabel(cam, label):
@@ -127,6 +128,7 @@ class other_Function:
     # 新增方法，用于批量渲染摄像头画面
     @staticmethod
     def renderCameras(labels, page=0):
+        other_Function.labels_list = labels
         logging.info("renderCameras函数开始运行")
         # other_Function.imgToLabel(0, labels[3])
         if not other_Function.cams:
@@ -163,6 +165,33 @@ class other_Function:
     def load_rust_webcam():
         pass
 
+    @staticmethod
+    def stop_webcam():
+        for thread in other_Function.threads:
+            thread.stop()
+            thread.quit()
+            thread.wait()
+        other_Function.threads = []
+        for label in other_Function.labels_list:
+            other_Function.clearLabel(label)
+
+    @staticmethod
+    def clearLabel(label):
+        try:
+            # 创建一个透明的 QPixmap，大小为 QLabel 的尺寸
+            label_width = label.width()
+            label_height = label.height()
+            transparent_pixmap = QPixmap(label_width, label_height)
+            transparent_pixmap.fill(Qt.transparent)
+
+            # 设置为透明图像
+            label.setPixmap(transparent_pixmap)
+        except Exception as e:
+            logging.error(f"Error in clearLabel: {e}")
+
+    @staticmethod
+    def stop():
+        pass
 
 if __name__ == '__main__':
     bf = other_Function()
