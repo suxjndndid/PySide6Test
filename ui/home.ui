@@ -812,7 +812,7 @@ QPushButton:pressed {
                    <string notr="true"/>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page1">
                    <layout class="QVBoxLayout" name="verticalLayout_31">
@@ -1813,7 +1813,7 @@ QPushButton:hover{
                           </spacer>
                          </item>
                          <item>
-                          <widget class="QPushButton" name="stop_button_3">
+                          <widget class="QPushButton" name="pre_page_button">
                            <property name="minimumSize">
                             <size>
                              <width>0</width>

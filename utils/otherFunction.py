@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
+from PySide6.QtCore import QTimer
 from PySide6.QtGui import QImage, QPixmap, Qt, QPainter, QBrush, QPainterPath
+from PySide6.QtWidgets import QApplication
 
 from 景区慧手.utils.webCamera import WebcamThread, Camera
 import logging
@@ -15,7 +17,7 @@ class other_Function:
     cams = [0]  # 确保cams已初始化
     trsp = []
     labels_list = []
-
+    now_label = 0
     @staticmethod
     def imgToLabel(cam, label):
         try:
@@ -128,7 +130,6 @@ class other_Function:
     # 新增方法，用于批量渲染摄像头画面
     @staticmethod
     def renderCameras(labels, page=0):
-        other_Function.labels_list = labels
         logging.info("renderCameras函数开始运行")
         # other_Function.imgToLabel(0, labels[3])
         if not other_Function.cams:
@@ -174,6 +175,11 @@ class other_Function:
         other_Function.threads = []
         for label in other_Function.labels_list:
             other_Function.clearLabel(label)
+            label.repaint()  # 强制立即重绘
+            QTimer.singleShot(100, label.repaint) # 强制立即重绘
+    @staticmethod
+    def stop():
+        other_Function.stop_webcam()
 
     @staticmethod
     def clearLabel(label):
@@ -186,12 +192,20 @@ class other_Function:
 
             # 设置为透明图像
             label.setPixmap(transparent_pixmap)
+
         except Exception as e:
             logging.error(f"Error in clearLabel: {e}")
 
     @staticmethod
-    def stop():
-        pass
+    def to_label():
+        other_Function.imgToLabel(0, other_Function.labels_list[other_Function.now_label])
+
+    @staticmethod
+    def next_l():
+        other_Function.now_label =(other_Function.now_label+1) % 4
+    @staticmethod
+    def pre_l():
+        other_Function.now_label =(other_Function.now_label-1+4) % 4
 
 if __name__ == '__main__':
     bf = other_Function()

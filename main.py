@@ -51,14 +51,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.video3,  # video3 QLabel
             self.video4  # video4 QLabel
         ]
+        other_Function.labels_list = self.labels
         self.cam_page = 0
-        self.run_button.clicked.connect(lambda: other_Function.renderCameras(self.labels, self.cam_page)
-)
-
+        # self.run_button.clicked.connect(lambda: other_Function.renderCameras(self.labels, self.cam_page))
+        self.run_button.clicked.connect(lambda: other_Function.to_label())
         self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
-        self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
+        self.connect = self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
         # 连接close按钮
-        self.stop_button.clicked.connect(lambda: other_Function.stop_webcam())
+        self.stop_button.clicked.connect(lambda: other_Function.stop())
+        self.pre_page_button.clicked.connect(lambda: other_Function.pre_l())
+        self.next_page_button.clicked.connect(lambda: other_Function.next_l())
     # Get the mouse position (used to hold down the title bar and drag the window)
     def mousePressEvent(self, event):
         p = event.globalPosition()
@@ -78,9 +80,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # else:
         #     self.stackedWidget.setCurrentWidget(self.page2)
         #     self.now_page = self.page2
-    # def close(self):
-    #     logging.info("close 函数运行")
-    #     other_Function.stop_webcam()
+    def close(self):
+        logging.info("close 函数运行")
+        other_Function.stop_webcam()
+        super().close()
 
 
 if __name__ == "__main__":

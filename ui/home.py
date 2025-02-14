@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'homeqTPvoD.ui'
+## Form generated from reading UI file 'homeaXVrUQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -861,12 +861,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
-        self.stop_button_3 = QPushButton(self.Pause_QF)
-        self.stop_button_3.setObjectName(u"stop_button_3")
-        self.stop_button_3.setMinimumSize(QSize(0, 30))
-        self.stop_button_3.setMaximumSize(QSize(16777215, 30))
-        self.stop_button_3.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.stop_button_3.setStyleSheet(u"QPushButton{\n"
+        self.pre_page_button = QPushButton(self.Pause_QF)
+        self.pre_page_button.setObjectName(u"pre_page_button")
+        self.pre_page_button.setMinimumSize(QSize(0, 30))
+        self.pre_page_button.setMaximumSize(QSize(16777215, 30))
+        self.pre_page_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.pre_page_button.setStyleSheet(u"QPushButton{\n"
 "background-image: url(:/all/img/pre.png);\n"
 "background-repeat: no-repeat;\n"
 "background-position: center;\n"
@@ -877,7 +877,7 @@ class Ui_MainWindow(object):
 "\n"
 "}")
 
-        self.horizontalLayout_5.addWidget(self.stop_button_3)
+        self.horizontalLayout_5.addWidget(self.pre_page_button)
 
         self.next_page_button = QPushButton(self.Pause_QF)
         self.next_page_button.setObjectName(u"next_page_button")
@@ -1671,7 +1671,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.ToggleBotton.setDefault(False)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.ToggleBotton_6.setDefault(False)
         self.ToggleBotton_2.setDefault(False)
         self.ToggleBotton_3.setDefault(False)
@@ -1714,7 +1714,7 @@ class Ui_MainWindow(object):
         self.video4.setText("")
         self.stop_button.setText("")
         self.run_button.setText("")
-        self.stop_button_3.setText("")
+        self.pre_page_button.setText("")
         self.next_page_button.setText("")
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u666f\u533a\u9879\u76ee", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u65e5\u5fd7", None))
