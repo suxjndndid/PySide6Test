@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'homeaXVrUQ.ui'
+## Form generated from reading UI file 'homekowpVH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.1
 ##
@@ -1003,10 +1003,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_3)
 
-        self.label_4 = QLabel(self.log)
-        self.label_4.setObjectName(u"label_4")
+        self.show_log = QLabel(self.log)
+        self.show_log.setObjectName(u"show_log")
 
-        self.verticalLayout.addWidget(self.label_4)
+        self.verticalLayout.addWidget(self.show_log)
 
         self.verticalLayout.setStretch(0, 5)
         self.verticalLayout.setStretch(1, 5)
@@ -1671,7 +1671,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.ToggleBotton.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.ToggleBotton_6.setDefault(False)
         self.ToggleBotton_2.setDefault(False)
         self.ToggleBotton_3.setDefault(False)
@@ -1719,7 +1719,7 @@ class Ui_MainWindow(object):
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u666f\u533a\u9879\u76ee", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u65e5\u5fd7", None))
         self.label_3.setText("")
-        self.label_4.setText("")
+        self.show_log.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.ToggleBotton_6.setText(QCoreApplication.translate("MainWindow", u"Model", None))
         self.model_box.setPlaceholderText("")

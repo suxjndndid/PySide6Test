@@ -2,16 +2,39 @@ import logging
 from PySide6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 
 class LogHandler(logging.Handler):
-    def __init__(self, label):
+    def __init__(self, label, max_lines=20):
         super().__init__()
-        self.label = label
+        self.label = label  # 保存 QLabel 引用
+        self.max_lines = max_lines  # 最大日志行数
 
     def emit(self, record):
         log_message = self.format(record)
         current_text = self.label.text()
-        new_text = current_text + "\n" + log_message
+
+        # 将新日志追加到当前文本
+        new_text = current_text + "\n" + log_message if current_text else log_message
+
+        # 检查行数是否超过最大值
+        lines = new_text.split("\n")
+        if len(lines) > self.max_lines:
+            # 只保留最新的 max_lines 行
+            new_text = "\n".join(lines[-self.max_lines:])
+
+        # 更新 QLabel 的文本
         self.label.setText(new_text)
 
+def get_logger(label, name):
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.INFO)
+    # 检查是否已经有处理器，避免重复添加
+    if not logger.handlers:
+        # 创建并设置自定义的 LogHandler
+        handler = LogHandler(label, max_lines=10)  # 传递 log_label 和 max_lines
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+
+    return logger
 class LogWindow(QWidget):
     def __init__(self):
         super().__init__()

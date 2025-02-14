@@ -9,14 +9,13 @@ import json
 import sys
 import cv2
 import os
+
+from 景区慧手.utils import  log_ext
 from 景区慧手.utils.otherFunction import other_Function
 from 景区慧手.utils.showQF_ext import ShowQfThread
-import logging
-
-# 配置日志
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
+log = None
 class MainWindow(QMainWindow, Ui_MainWindow):
+    global log
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         # basic interface
@@ -56,11 +55,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # self.run_button.clicked.connect(lambda: other_Function.renderCameras(self.labels, self.cam_page))
         self.run_button.clicked.connect(lambda: other_Function.to_label())
         self.turnToPage2.clicked.connect(lambda: self.switch_to_page(self.page2))
-        self.connect = self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
+        self.src_rtsp_button.clicked.connect(lambda: self.switch_to_page(self.page1))
         # 连接close按钮
         self.stop_button.clicked.connect(lambda: other_Function.stop())
         self.pre_page_button.clicked.connect(lambda: other_Function.pre_l())
         self.next_page_button.clicked.connect(lambda: other_Function.next_l())
+
+        self.logger = log_ext.get_logger(self.show_log, "main")
+        other_Function.set_log(self.logger)
     # Get the mouse position (used to hold down the title bar and drag the window)
     def mousePressEvent(self, event):
         p = event.globalPosition()
@@ -74,16 +76,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def switch_to_page(self, page):
         self.stackedWidget.setCurrentWidget(page)
-        # if self.now_page == self.page2:
-        #     self.stackedWidget.setCurrentWidget(self.page1)
-        #     self.now_page = self.page1
-        # else:
-        #     self.stackedWidget.setCurrentWidget(self.page2)
-        #     self.now_page = self.page2
     def close(self):
-        logging.info("close 函数运行")
+        self.logger.info("close 函数运行")
         other_Function.stop_webcam()
         super().close()
+
 
 
 if __name__ == "__main__":
